@@ -2,7 +2,7 @@
 #define CLAVIER_H
 
 
-int touche_clavier();
+int get_direction();
 
 
 #endif

@@ -1,38 +1,79 @@
-#include<ncurses.h>
+/*cette partie du code je l'ai genere via chatgpt*/
 
-int touche_clavier(){
-	int ch;
-  	int touche = -1;
- /* Initialisation de ncurses et du clavier(4 lignes)*/
- 	 initscr();
- 	 raw();
-  	keypad(stdscr, TRUE);
-  	noecho();
-	halfdelay(20);  /* Temps d'exécution max de getch à 1/10eme de seconde */
-	
-	ch = getch();
-	
-	 switch(ch) {  
-        	case KEY_UP:   
-           		touche=0;
-           	break;
-       		 case KEY_DOWN: 
-           		touche=3;
-         	  break;
-       		 case KEY_LEFT: 
-           		touche=1
-       		   break; 
-       		 case KEY_RIGHT: 
-          		touche=2;
-       		    break;
-      		  default:
-        		touche =-1;
-      	}	
-	
-	
-	return touche;
-	
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <sys/select.h>
+#include <termios.h>
+#include "clavier.h"
+
+int get_direction() {
+    struct termios org_opts, new_opts;
+    char c;
+    int direction = -1;
+
+    // Get current terminal settings
+    if (tcgetattr(STDIN_FILENO, &org_opts) != 0) {
+        perror("tcgetattr");
+        exit(EXIT_FAILURE);
+    }
+
+    // Copy current settings to new settings
+    new_opts = org_opts;
+
+    // Disable canonical mode and echoing
+    new_opts.c_lflag &= ~(ICANON | ECHO);
+
+    // Set a timeout for non-blocking read
+    new_opts.c_cc[VMIN] = 0;
+    new_opts.c_cc[VTIME] = 20; // Timeout in tenths of a second (2 seconds)
+
+    // Apply new settings
+    if (tcsetattr(STDIN_FILENO, TCSANOW, &new_opts) != 0) {
+        perror("tcsetattr");
+        exit(EXIT_FAILURE);
+    }
+
+    // Read one character
+    ssize_t nread = read(STDIN_FILENO, &c, 1);
+
+    // Restore original terminal settings
+    if (tcsetattr(STDIN_FILENO, TCSANOW, &org_opts) != 0) {
+        perror("tcsetattr");
+        exit(EXIT_FAILURE);
+    }
+
+    // Check if a character is read
+    if (nread == 1) {
+        switch (c) {
+            case 'w':
+            case 'W':
+                direction = 0; // UP
+                break;
+            case 'a':
+            case 'A':
+                direction = 1; // LEFT
+                break;
+            case 'd':
+            case 'D':
+                direction = 2; // RIGHT
+                break;
+            case 's':
+            case 'S':
+                direction = 3; // DOWN
+                break;
+            default:
+                direction = -1; // Other keys
+                break;
+        }
+    }
+
+    return direction;
 }
 
-    
+
+
+
+	
 
