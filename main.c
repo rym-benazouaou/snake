@@ -4,6 +4,7 @@
 #include<unistd.h>
 #include "grille.h"
 #include "serpent.h"
+#include "clavier.h"
 
 
 int main(int argc, char *argv[]){
@@ -28,7 +29,7 @@ int m = atoi(argv[2]);
 		grille_afficher(jeu_grille);
 		ajouter_element_serpent(serpent);
 		srand(time(NULL));
-		nouvelle_direction = rand() % 4;
+		nouvelle_direction = get_direction() ;
 		/*ignorer les demi tour */
 		switch(nouvelle_direction){
 			case 0:
@@ -43,10 +44,10 @@ int m = atoi(argv[2]);
 			case 3:
 				if(serpent -> direction ==0) nouvelle_direction =0;
 				break;
-			default : printf("erreur");
+			default : 
+				nouvelle_direction= serpent ->direction;
 		}
 		deplacer_serpent(serpent, nouvelle_direction);
-		sleep(2);
 	}
 	
 return EXIT_SUCCESS;
