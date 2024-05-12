@@ -22,7 +22,8 @@ int m = atoi(argv[2]);
 	
 	
 	while(1){
-		system("clear");
+		/*system("clear");*/
+		printf("\33[2J");
 		grille_vider (jeu_grille);
 		grille_tirage_fruit (jeu_grille);
 		grille_remplir(jeu_grille,serpent);

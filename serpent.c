@@ -45,7 +45,7 @@ void deplacer_serpent(struct tete_serpent *serpent,int direction){
 	/*deplacer la tete du serpent*/
 	switch(direction){
 		case 0:/*haut*/
-			serpent -> position_x ++;
+			serpent -> position_x --;
 			break;
 		case 1:/*gauche*/
 			serpent -> position_y --;
@@ -54,7 +54,7 @@ void deplacer_serpent(struct tete_serpent *serpent,int direction){
 			serpent -> position_y ++;
 			break;
 		case 3:/*bas*/
-			serpent -> position_x --;
+			serpent -> position_x ++;
 			break;
 		default:
 			printf("erreur");
