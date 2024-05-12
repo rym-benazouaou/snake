@@ -15,7 +15,6 @@ int main(int argc, char *argv[]){
 int n = atoi(argv[1]);
 int m = atoi(argv[2]);
 	printf("le grille fait %d lignes et %d colonnes\n", n,m);
-	/*struct couleur couleur;*/
 	struct grille * jeu_grille = allouer_grille( n , m);
 	struct tete_serpent *serpent = cree_serpent(n,m);
 	int nouvelle_direction;

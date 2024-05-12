@@ -70,7 +70,7 @@ void grille_remplir( struct grille *g, struct tete_serpent *tete){
 	/*faire apparaitre le fruit en rouge aleatoirement*/
 	strcpy(g -> tab[g -> fruitX][ g -> fruitY],"\033[41m");
 	/*faire apparaitre la tete du serpent*/
-	strcpy(g -> tab[tete-> position_x][tete -> position_y],"\033[34m");
+	strcpy(g -> tab[tete-> position_x][tete -> position_y],"\033[43m");
 	/*faire apparaitre le reste du serpent*/
 	struct element_serpent *element_ptr=tete -> queue;
 	while(element_ptr){
