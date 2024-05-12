@@ -27,7 +27,7 @@ int m = atoi(argv[2]);
 		grille_vider (jeu_grille);
 		grille_tirage_fruit (jeu_grille);
 		grille_remplir(jeu_grille,serpent);
-		grille_afficher(jeu_grille);
+		grille_redessiner(jeu_grille);
 		ajouter_element_serpent(serpent);
 		srand(time(NULL));
 		nouvelle_direction = get_direction() ;

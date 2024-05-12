@@ -46,7 +46,7 @@ int i,j;
 	  }
 	} 
 }
-void grille_afficher(struct grille *g){
+void grille_redessiner(struct grille *g){
 
 	int i,j;
 	printf("n=%d :\n", g -> n);
@@ -90,38 +90,4 @@ void desallouer_grille(struct grille *g){
 			free(g -> tab);
 
 }
-
-
-void grille_redessiner(struct grille *g){
-	int  i,j,k;
-
-	for(i=0; i< g -> n ; i++){
-		if(i==0){
-		printf(" ");
-	        for(k=0;k< g -> m ; k++){
-	   	printf("__");
-		}
-		}
-	  printf("\n");
-	
-	for(j=0 ; j< g -> m ; j++){
-		if(j==0){
-			printf("| %s",g->tab[i][j]);
-		}else if(j == ( g -> m)-1){
-			printf("%s |",g -> tab[i][j]);
-		}else {
-			printf("%s ",g -> tab[i][j]);
-		}
-	}
-printf("\n");
-	if( i == (g -> n)-1){
-		printf(" ");
-		for(k=0 ; k < g -> m ;k++){
-			printf("__");
-		}
-		printf("\n\n");
-	}
-	}
-}
-	
 
