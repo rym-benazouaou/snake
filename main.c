@@ -31,7 +31,7 @@ int m = atoi(argv[2]);
 			tirage_necessaire=1;
 		}
 		srand(time(NULL));
-			nouvelle_direction = get_direction() ;
+			nouvelle_direction = touche_clavier() ;
 			/*ignorer les demi tour */
 			switch(nouvelle_direction){
 				case 0:

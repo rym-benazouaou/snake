@@ -1,5 +1,5 @@
 all: grille.o  serpent.o clavier.o main.o
-	gcc grille.o serpent.o clavier.o main.o -o programme
+	gcc grille.o serpent.o clavier.o main.o -o programme -lncurses
 grille.o: grille.c grille.h
 	gcc -c -Wall -Wfatal-errors -ansi grille.c
 serpent.o: serpent.c serpent.h
