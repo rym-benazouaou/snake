@@ -39,7 +39,7 @@ int main(int argc, char *argv[]){
 			printf("Game Over !!!\n");
 			grille_desallouer(jeu_grille);
 			desallouer_serpent(serpent);
-			return 1;
+			return 0;
 		}
 		if(tirage_necessaire){
 			grille_tirage_fruit (jeu_grille);
