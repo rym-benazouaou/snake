@@ -54,6 +54,11 @@ int m = atoi(argv[2]);
 				grille_tirage_fruit (jeu_grille);
 				tirage_necessaire =0;
 			}
+			/*if(serpent -> position_x== 0 || serpent -> position >= jeu_grille -> n-1)*/
+			
+			
+			
+			
 		
 	}
 	

@@ -4,7 +4,7 @@
 #include "serpent.h"
 #include "grille.h"
 
-
+/*creer la tete du serpent et la positionner dans la grille */
 struct tete_serpent *cree_serpent(int ligne_grille, int col_grille){
 	struct tete_serpent *tete= malloc(sizeof(tete));
 	if(tete==NULL){
@@ -22,6 +22,7 @@ struct tete_serpent *cree_serpent(int ligne_grille, int col_grille){
 	return tete;
 }
 
+
 void ajouter_element_serpent(struct tete_serpent *serpent){
 	struct element_serpent *element_ptr= serpent -> queue;
 	/*chercher le dernier element*/
@@ -38,6 +39,7 @@ void ajouter_element_serpent(struct tete_serpent *serpent){
 	serpent -> queue -> queue = NULL;
 	}
 }
+
 
 void deplacer_serpent(struct tete_serpent *serpent,int direction){
 	int position_x = serpent -> position_x;

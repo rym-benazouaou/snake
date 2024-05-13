@@ -60,6 +60,7 @@ void grille_redessiner(struct grille *g){
 	}
 
 }
+
 void grille_tirage_fruit( struct grille *g){
 	srand(time(NULL));
 	g->fruitX = rand() %( g -> n-2)+1 ;
@@ -79,6 +80,7 @@ void grille_remplir( struct grille *g, struct tete_serpent *tete){
 	}
 }
 
+/*desallouer les espaces allouer*/
 void desallouer_grille(struct grille *g){
 	int i,j;
 	for(i=0; i< g -> n ; i++){
