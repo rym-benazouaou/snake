@@ -37,6 +37,8 @@ int main(int argc, char *argv[]){
 			printf("\33[2J");
 			printf("\33[H");
 			printf("Game Over !!!\n");
+			grille_desallouer(jeu_grille);
+			desallouer_serpent(serpent);
 			return 1;
 		}
 		if(tirage_necessaire){

@@ -145,7 +145,15 @@ int deplacer_serpent(struct tete_serpent *serpent,int grille_x,int grille_y,int 
 	return detection_echec(serpent,grille_x,grille_y);
 }
 
-
+void desallouer_serpent(struct tete_serpent *serpent){
+	struct element_serpent *element_ptr= serpent -> queue;
+	free(serpent);
+	while(element_ptr){
+		struct element_serpent *element_ptr_tmp = element_ptr -> queue;
+		free(element_ptr);
+		element_ptr = element_ptr_tmp;
+	}
+}
 
 
 

@@ -19,8 +19,6 @@ struct tete_serpent{
 struct tete_serpent *cree_serpent(int position_x, int position_y);
 void ajouter_element_serpent(struct tete_serpent *serpent);
 int deplacer_serpent(struct tete_serpent *serpent,int grille_x, int grille_y,int direction);
-/*struct serpent *cree_element(int position_x, int position_y);
-void detruire_serpent(struct serpent *serpent);
-void ajouter_section(struct serpent *serpent, struct couleur couleur);*/
+void desallouer_serpent(struct tete_serpent *serpent);
 
 #endif

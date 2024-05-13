@@ -81,7 +81,7 @@ void grille_remplir( struct grille *g, struct tete_serpent *tete){
 }
 
 /*desallouer les espaces allouer*/
-void desallouer_grille(struct grille *g){
+void grille_desallouer(struct grille *g){
 	int i,j;
 	for(i=0; i< g -> n ; i++){
 		for(j=0; j< g -> m ; j++){
