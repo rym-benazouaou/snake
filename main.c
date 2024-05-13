@@ -12,8 +12,8 @@ int main(int argc, char *argv[]){
 		printf("erreur, usage : %s <nombre_de_ligne> <nombre_de_colonne>\n", argv[0]);
 	return 1;
 	}
-int n = atoi(argv[1]);
-int m = atoi(argv[2]);
+	int n = atoi(argv[1]);
+	int m = atoi(argv[2]);
 	printf("le grille fait %d lignes et %d colonnes\n", n,m);
 	struct grille * jeu_grille = allouer_grille( n , m);
 	struct tete_serpent *serpent = cree_serpent(n,m);
@@ -30,30 +30,12 @@ int m = atoi(argv[2]);
 			ajouter_element_serpent(serpent);
 			tirage_necessaire=1;
 		}
-		srand(time(NULL));
-			nouvelle_direction = touche_clavier() ;
-			/*ignorer les demi tour */
-			switch(nouvelle_direction){
-				case 0:
-					if(serpent -> direction ==3) nouvelle_direction =3;
-					break;
-				case 1:
-					if(serpent -> direction ==2) nouvelle_direction =2;
-					break;
-				case 2:
-					if(serpent -> direction ==1) nouvelle_direction =1;
-					break;
-				case 3:
-					if(serpent -> direction ==0) nouvelle_direction =0;
-					break;
-				default : 
-					nouvelle_direction= serpent ->direction;
-			}
-			deplacer_serpent(serpent, nouvelle_direction);
-			if(tirage_necessaire){
-				grille_tirage_fruit (jeu_grille);
-				tirage_necessaire =0;
-			}
+		nouvelle_direction = touche_clavier() ;
+		deplacer_serpent(serpent, nouvelle_direction);
+		if(tirage_necessaire){
+			grille_tirage_fruit (jeu_grille);
+			tirage_necessaire =0;
+		}
 			/*if(serpent -> position_x== 0 || serpent -> position >= jeu_grille -> n-1)*/
 			
 			

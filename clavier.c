@@ -13,7 +13,7 @@ int touche_clavier() {
   noecho();
 
 
-  halfdelay(20);  /* Temps d'exécution max de getch à 1/10eme de seconde */
+  halfdelay(10);  /* Temps d'exécution max de getch à 1/10eme de seconde */
   ch = getch();
 
 

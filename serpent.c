@@ -39,29 +39,67 @@ void ajouter_element_serpent(struct tete_serpent *serpent){
 	serpent -> queue -> queue = NULL;
 	}
 }
+void haut(struct tete_serpent *serpent){
+	serpent -> position_x --;
+}
 
+void bas(struct tete_serpent *serpent){
+	serpent -> position_x ++;
+}
+
+void gauche(struct tete_serpent *serpent){
+	serpent -> position_y --;
+}
+
+void droite(struct tete_serpent *serpent){
+	serpent -> position_y ++;
+}
 
 void deplacer_serpent(struct tete_serpent *serpent,int direction){
 	int position_x = serpent -> position_x;
 	int position_y = serpent -> position_y;
+	if (direction == -1 ){
+		direction = serpent -> direction;
+	}
+	int direction_courante = serpent -> direction;
 	/*deplacer la tete du serpent*/
 	switch(direction){
 		case 0:/*haut*/
-			serpent -> position_x --;
+			if(direction_courante == 3){ /*bas: eviter les demi tour ,on continue vers lebas*/
+				bas(serpent);
+			}else{
+				haut(serpent);
+				serpent -> direction = direction;
+			}
 			break;
 		case 1:/*gauche*/
-			serpent -> position_y --;
+			if(direction_courante == 2){ /*droite: eviter les demi tour ,on continue vers la droite*/
+				droite(serpent);
+			}else{
+				gauche(serpent);
+				serpent -> direction = direction;
+			}
 			break;
 		case 2:/*droite*/
-			serpent -> position_y ++;
+			if(direction_courante == 1){ /*gauche: eviter les demi tour ,on continue vers la gauche*/
+				gauche(serpent);
+			}else{
+				droite(serpent);
+				serpent -> direction = direction;
+			}
 			break;
 		case 3:/*bas*/
-			serpent -> position_x ++;
+			if(direction_courante == 0){ /*haut: eviter les demi tour ,on continue vers le haut*/
+				haut(serpent);
+			}else{
+				bas(serpent);
+				serpent -> direction = direction;
+			}
 			break;
 		default:
 			printf("erreur");
 	}
-	serpent -> direction = direction;
+	
 	/*deplacer le reste du serpent*/
 	struct element_serpent *element_ptr= serpent -> queue;
 	/*chaque element  prend la position de l'element qui le devance*/

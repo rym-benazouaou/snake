@@ -11,3 +11,6 @@ main.o : main.c
 	 gcc -c -Wall -Wfatal-errors -ansi main.c
 clean: 
 	rm *.o programme
+
+run:
+	./programme 20 20
