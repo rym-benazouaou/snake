@@ -19,6 +19,7 @@ int main(int argc, char *argv[]){
 	struct tete_serpent *serpent = cree_serpent(n,m);
 	int nouvelle_direction;
 	int tirage_necessaire=0;
+	int echec=0;
 	
 	grille_tirage_fruit (jeu_grille);
 	while(1){
@@ -31,18 +32,20 @@ int main(int argc, char *argv[]){
 			tirage_necessaire=1;
 		}
 		nouvelle_direction = touche_clavier() ;
-		deplacer_serpent(serpent, nouvelle_direction);
+		echec = deplacer_serpent(serpent,jeu_grille -> n, jeu_grille ->m,nouvelle_direction);
+		if(echec){
+			printf("\33[2J");
+			printf("\33[H");
+			printf("Game Over !!!\n");
+			return 1;
+		}
 		if(tirage_necessaire){
 			grille_tirage_fruit (jeu_grille);
 			tirage_necessaire =0;
 		}
-			/*if(serpent -> position_x== 0 || serpent -> position >= jeu_grille -> n-1)*/
-			
-			
-			
 			
 		
 	}
 	
-return EXIT_SUCCESS;
+return 0;
 }
