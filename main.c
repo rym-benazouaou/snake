@@ -14,16 +14,19 @@ int main(int argc, char *argv[]){
 	}
 	int n = atoi(argv[1]);
 	int m = atoi(argv[2]);
-	printf("le grille fait %d lignes et %d colonnes\n", n,m);
-	struct grille * jeu_grille = allouer_grille( n , m);
-	struct tete_serpent *serpent = cree_serpent(n,m);
 	int nouvelle_direction;
 	int tirage_necessaire=0;
 	int echec=0;
+	printf("le grille fait %d lignes et %d colonnes\n", n,m);
+	srand(time(NULL));
+	struct grille * jeu_grille = allouer_grille( n , m);
+	struct tete_serpent *serpent = cree_serpent(n,m);
+	ajouter_element_serpent(serpent);
 	
 	grille_tirage_fruit (jeu_grille);
 	while(1){
 		printf("\33[2J");
+		printf("\33[H");
 		grille_vider (jeu_grille);
 		grille_remplir(jeu_grille,serpent);
 		grille_redessiner(jeu_grille);

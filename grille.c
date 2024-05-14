@@ -62,7 +62,6 @@ void grille_redessiner(struct grille *g){
 }
 
 void grille_tirage_fruit( struct grille *g){
-	srand(time(NULL));
 	g->fruitX = rand() %( g -> n-2)+1 ;
 	g->fruitY = rand() % (g -> m-2)+1 ;
 }

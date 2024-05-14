@@ -10,7 +10,6 @@ struct tete_serpent *cree_serpent(int ligne_grille, int col_grille){
 	if(tete==NULL){
 		perror("erreur");
 	}else{
-		srand(time(NULL));
 		tete -> position_x = rand() % ( ligne_grille -2)+1 ;
 		tete -> position_y = rand() % ( col_grille -2)+1 ;
 		tete -> direction= rand() % 4  ;
@@ -126,22 +125,24 @@ int deplacer_serpent(struct tete_serpent *serpent,int grille_x,int grille_y,int 
 			
 	}
 	
-	/*deplacer le reste du serpent*/
+	/*deplacer le reste du serpent si il ya un reste */
 	struct element_serpent *element_ptr= serpent -> queue;
 	/*chaque element  prend la position de l'element qui le devance*/
-	while(element_ptr -> queue){
-		int x,y;
-		x = element_ptr -> position_x; 
+	if(element_ptr){/*il ya que la tete du serpent */
+		while(element_ptr -> queue){
+			int x,y;
+			x = element_ptr -> position_x; 
+			element_ptr -> position_x = position_x;
+			position_x = x;
+			y = element_ptr -> position_y; 
+			element_ptr -> position_y = position_y;
+			position_y = y;
+			element_ptr = element_ptr -> queue;
+		}
+		/*deplacer le dernier element*/
 		element_ptr -> position_x = position_x;
-		position_x = x;
-		y = element_ptr -> position_y; 
 		element_ptr -> position_y = position_y;
-		position_y = y;
-		element_ptr = element_ptr -> queue;
 	}
-	/*deplacer le dernier element*/
-	element_ptr -> position_x = position_x;
-	element_ptr -> position_y = position_y;
 	return detection_echec(serpent,grille_x,grille_y);
 }
 
