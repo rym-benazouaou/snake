@@ -13,7 +13,6 @@ struct tete_serpent *cree_serpent(int ligne_grille, int col_grille){
 		tete -> position_x = rand() % ( ligne_grille -2)+1 ;
 		tete -> position_y = rand() % ( col_grille -2)+1 ;
 		tete -> direction= rand() % 4  ;
-		tete -> position_dans_la_chaine= 1  ;
 		tete -> queue = NULL;
 
 	}
@@ -24,17 +23,14 @@ struct tete_serpent *cree_serpent(int ligne_grille, int col_grille){
 
 void ajouter_element_serpent(struct tete_serpent *serpent){
 	struct element_serpent *element_ptr= serpent -> queue;
-	/*chercher le dernier element*/
-	if(element_ptr){
-		while(element_ptr -> queue){
+	if(element_ptr){ /*si NULL alors il n'y a que la tete*/
+		while(element_ptr -> queue){ /*chercher le dernier element*/
 			element_ptr = element_ptr -> queue;
 		}
 		element_ptr -> queue =(struct element_serpent *) malloc(sizeof(element_ptr));
-		element_ptr -> queue -> position_dans_la_chaine =element_ptr -> position_dans_la_chaine ++;
 		element_ptr -> queue -> queue = NULL;
 	}else{
 	serpent -> queue =(struct element_serpent *) malloc(sizeof(element_ptr));
-	serpent -> queue -> position_dans_la_chaine =serpent -> position_dans_la_chaine ++;
 	serpent -> queue -> queue = NULL;
 	}
 }
@@ -128,8 +124,8 @@ int deplacer_serpent(struct tete_serpent *serpent,int grille_x,int grille_y,int 
 	/*deplacer le reste du serpent si il ya un reste */
 	struct element_serpent *element_ptr= serpent -> queue;
 	/*chaque element  prend la position de l'element qui le devance*/
-	if(element_ptr){/*il ya que la tete du serpent */
-		while(element_ptr -> queue){
+	if(element_ptr){/*is NULL alors il ya que la tete du serpent */
+		while(element_ptr -> queue){ /*sinon on fait deplacer la queue*/
 			int x,y;
 			x = element_ptr -> position_x; 
 			element_ptr -> position_x = position_x;

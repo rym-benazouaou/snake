@@ -5,13 +5,11 @@
 struct element_serpent{
 	int position_x;
 	int position_y;
-	int position_dans_la_chaine;
 	struct element_serpent *queue;
 };
 struct tete_serpent{
 	int position_x;
 	int position_y;
-	int position_dans_la_chaine;
 	char direction;
 	struct element_serpent *queue;
 };

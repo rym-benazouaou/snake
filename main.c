@@ -20,10 +20,10 @@ int main(int argc, char *argv[]){
 	printf("le grille fait %d lignes et %d colonnes\n", n,m);
 	srand(time(NULL));
 	struct grille * jeu_grille = allouer_grille( n , m);
+	grille_tirage_fruit (jeu_grille);
 	struct tete_serpent *serpent = cree_serpent(n,m);
 	ajouter_element_serpent(serpent);
 	
-	grille_tirage_fruit (jeu_grille);
 	while(1){
 		printf("\33[2J");
 		printf("\33[H");
@@ -44,6 +44,7 @@ int main(int argc, char *argv[]){
 			desallouer_serpent(serpent);
 			return 0;
 		}
+		
 		if(tirage_necessaire){
 			grille_tirage_fruit (jeu_grille);
 			tirage_necessaire =0;

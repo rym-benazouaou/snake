@@ -49,8 +49,6 @@ int i,j;
 void grille_redessiner(struct grille *g){
 
 	int i,j;
-	printf("n=%d :\n", g -> n);
-	printf("m=%d :\n", g -> m);
 	for(i=0 ; i< g -> n ; i++){
 	   for(j=0 ; j< g -> m ; j++){
 	   /*revenir a la couleur de texte normal sur fond noir*/
