@@ -1,8 +1,5 @@
 # Titre du programme : jeu snake en C
 
-# repo github:
-https://github.com/rym-benazouaou/snake
-
 # utilisation : 
 make
 make run
