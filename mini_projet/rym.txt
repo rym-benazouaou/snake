@@ -1,14 +1,12 @@
-# Titre du programme : jeu snake en C
-
-# repo github:
+Titre du programme : jeu snake en C
+repo github:
 https://github.com/rym-benazouaou/snake
-
-# utilisation : 
+utilisation : 
 make
 make run
 sinon ./programme n m 
 
-# Description:
+Description:
 
 Ce programme est une implementation simple du jeu snake en C. Le joueur controle un serpent qui se deplace a travers une grille et doit manger le fruit rouge pour grandir.Le jeu se termine si le serpent se heurte a un mur ou sur lui meme. 
 
@@ -42,5 +40,4 @@ Exemple d'entree:
 Exemples de sortie :
  Affichage de la grille du jeu avec le serpent qui se deplace et mange les fruits.
  Message d'echec en cas de collision.
-
 
