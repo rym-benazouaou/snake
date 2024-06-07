@@ -1,6 +1,6 @@
 # Titre du programme : jeu snake en C
 
-# utilisation : 
+# Utilisation : 
 make
 make run
 sinon ./programme n m 
